@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchVideos from '../containers/SearchVideos';
-import VisibleVideoList from '../components/VisibleVideoList';
+import VisibleVideoList from '../containers/VisibleVideoList';
 
 const App = () => (
   <div>
