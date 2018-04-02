@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { saveVideo } from '../actions';
 import VideoList from '../components/VideoList';
 
 const mapStateToProps = state => ({
@@ -8,7 +9,7 @@ const mapStateToProps = state => ({
 })
 
 const maptDispatchToProps = dispatch => ({
-  toggleVideo: id => dispatch(toggleVideo(id))
+  saveVideo: id => dispatch(saveVideo(id))
 })
 
 export default connect(

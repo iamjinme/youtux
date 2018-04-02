@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Video from './Video';
 import { Row } from 'react-bootstrap';
 
-const VideoList = ({ videos, toggleVideo }) => (
+const VideoList = ({ videos, saveVideo }) => (
   <Row>
     { videos.map(video => (
-        <Video key={video.id} {...video} onClick={ () => toggleVideo(video.id) } />
+        <Video key={video.id} {...video} onClick={ () => saveVideo(video) } />
       ))
     }
   </Row>
@@ -22,7 +22,7 @@ VideoList.propTypes = {
       year: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  toggleVideo: PropTypes.func.isRequired,
+  saveVideo: PropTypes.func.isRequired,
 }
 
 export default VideoList;

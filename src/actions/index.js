@@ -22,3 +22,8 @@ export const searchVideos = (text = '') => {
       })
   }
 }
+
+export const saveVideo = video => ({
+  type: SAVE_VIDEO,
+  video,
+})
