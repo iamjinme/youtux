@@ -23,3 +23,7 @@ export const saveVideo = video => ({
   type: SAVE_VIDEO,
   video,
 })
+
+export const showMyVideos = () => ({
+  type: SHOW_MY_VIDEOS,
+})

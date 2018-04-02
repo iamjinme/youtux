@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import {
-  SEARCH_VIDEOS, SAVE_VIDEO
+  SEARCH_VIDEOS,
+  SAVE_VIDEO,
+  SHOW_MY_VIDEOS
 } from '../actions'
 
 const foundId = (videos, id) => {
@@ -29,6 +31,9 @@ const videos = (state = [], action) => {
       thumbnail: video.snippet.thumbnails.high.url,
       year: video.snippet.publishedAt.substr(0,4),
     }))
+    case SHOW_MY_VIDEOS:
+      const myVideos = localStorage.getItem('myVideos');
+      return JSON.parse(myVideos);
     default:
       return state
   }

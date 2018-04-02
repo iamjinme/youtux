@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { searchVideos } from '../actions';
-import { Form, FormGroup, ControlLabel, FormControl, Button } from 'react-bootstrap';
+import { searchVideos, showMyVideos } from '../actions';
+import { Form, FormGroup, ControlLabel, FormControl, Button, ButtonGroup } from 'react-bootstrap';
 
 const SearchVideos = ({ dispatch }) => {
   let input
@@ -18,9 +18,17 @@ const SearchVideos = ({ dispatch }) => {
       >
         <FormGroup controlId="formInlineName">
           <ControlLabel> :: Youtux :: </ControlLabel>{' '}
-          <FormControl inputRef={ node => input = node } type="text" placeholder="Write a video name" />
+          <FormControl inputRef={ node => input = node } type="text" placeholder="Write anything" />
         </FormGroup>{' '}
-        <Button type="submit">Search</Button>
+        <ButtonGroup>
+          <Button type="submit" bsStyle="info">Search</Button>
+          <Button 
+            onClick={ () => dispatch(showMyVideos()) }
+            bsStyle="warning"
+          >
+          My Videos
+          </Button>
+        </ButtonGroup>
       </Form>
     </div>
   )
