@@ -1,5 +1,9 @@
 import axios from 'axios';
 export const SEARCH_VIDEOS = 'SEARCH_VIDEOS';
+export const CHANGE_TEXT = 'CHANGE_TEXT';
+export const CHANGE_CATEGORY = 'CHANGE_CATEGORY';
+export const CHANGE_YEAR = 'CHANGE_YEAR';
+export const SAVE_VIDEO = 'SAVE_VIDEO';
 
 const API_KEY = 'AIzaSyDK7Jus-yWofaJKGRwDD5gPpZX62t7j47s';
 const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&type=video&q=`;
