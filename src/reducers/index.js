@@ -12,10 +12,17 @@ const textToSearch = (state = '', action) => {
   }
 }
 
-const videos = (state = '', action) => {
+const videos = (state = [], action) => {
   switch (action.type) {
     case SEARCH_VIDEOS:
-      return action.videos
+    return action.videos.map(video => ({
+      id: video.id.videoId,
+      text: video.snippet.title,
+      date: video.snippet.publishedAt,
+      user: video.snippet.channelTitle,
+      thumbnail: video.snippet.thumbnails.default.url,
+      saved: false,
+    }))
     default:
       return state
   }
