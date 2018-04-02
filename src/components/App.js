@@ -1,11 +1,14 @@
 import React from 'react';
 import SearchVideos from '../containers/SearchVideos';
 import VisibleVideoList from '../containers/VisibleVideoList';
+import { Grid, Jumbotron } from 'react-bootstrap';
 
 const App = () => (
   <div>
-    <SearchVideos />
-    <VisibleVideoList />
+    <Grid>
+      <SearchVideos />
+      <VisibleVideoList />
+    </Grid>
   </div>
 )
 
