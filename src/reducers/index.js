@@ -17,11 +17,10 @@ const videos = (state = [], action) => {
     case SEARCH_VIDEOS:
     return action.videos.map(video => ({
       id: video.id.videoId,
-      text: video.snippet.title,
-      date: video.snippet.publishedAt,
+      title: video.snippet.title,
       user: video.snippet.channelTitle,
-      thumbnail: video.snippet.thumbnails.default.url,
-      saved: false,
+      thumbnail: video.snippet.thumbnails.high.url,
+      year: video.snippet.publishedAt.substr(0,4),
     }))
     default:
       return state
