@@ -5,6 +5,10 @@ import {
   SHOW_MY_VIDEOS
 } from '../actions'
 
+const initialMyVideos = () => {
+  return JSON.parse(localStorage.getItem('myVideos'));
+}
+
 const foundId = (videos, id) => {
   const found = videos.find((video) => {
     return video.id === id
@@ -39,7 +43,7 @@ const videos = (state = [], action) => {
   }
 }
 
-const myVideos = (state = [], action) => {
+const myVideos = (state = initialMyVideos(), action) => {
   switch (action.type) {
     case SAVE_VIDEO:
       if (foundId(state, action.video.id)) return state;
