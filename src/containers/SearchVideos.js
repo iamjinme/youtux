@@ -3,7 +3,8 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { searchVideos, showMyVideos, changeText } from '../actions';
 import { Form, FormGroup, Button, ButtonGroup } from 'react-bootstrap';
-import { AsyncTypeahead } from 'react-bootstrap-typeahead';
+import { AsyncTypeahead, Typeahead } from 'react-bootstrap-typeahead';
+import FilterChannel from '../components/FilterChannel';
 import { API_KEY } from '../actions'
 
 const SUGGEST_URL = `https://suggestqueries.google.com/complete/search?key=${API_KEY}&client=firefox&q=`;
@@ -22,7 +23,7 @@ class AutoComplete extends React.Component {
   render() {
     return (
       <AsyncTypeahead
-        placeholder='Write anything'
+        placeholder='Write anything to search'
         isLoading={ this.state.isLoading }
         onChange={ changed => this.changeText(changed[0]) }
         submitFormOnEnter={ true }
@@ -65,7 +66,10 @@ const SearchVideos = ({ dispatch }) => {
           >
           My Videos
           </Button>
-        </ButtonGroup>
+        </ButtonGroup>{' '}
+        <FormGroup>
+          <FilterChannel />
+        </FormGroup>
       </Form>
     </div>
   )
