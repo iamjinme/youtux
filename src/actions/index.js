@@ -6,14 +6,15 @@ export const CHANGE_YEAR = 'CHANGE_YEAR';
 export const SAVE_VIDEO = 'SAVE_VIDEO';
 export const SHOW_MY_VIDEOS = 'SHOW_MY_VIDEOS';
 
-const API_KEY = 'AIzaSyDK7Jus-yWofaJKGRwDD5gPpZX62t7j47s';
+export const API_KEY = 'AIzaSyDK7Jus-yWofaJKGRwDD5gPpZX62t7j47s';
 const YOUTUBE_URL = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&type=video&q=`;
 
-export const searchVideos = text => {
+export const searchVideos = () => {
   return (dispatch, getState) => {
+    const text = getState().textToSearch.trim();
+    if (!text) return;
     axios.get(`${YOUTUBE_URL}${text}`)
       .then((response) => {
-        console.log(response.data.items);
         dispatch({ type: SEARCH_VIDEOS, text, videos: response.data.items })
       })
   }
@@ -26,4 +27,9 @@ export const saveVideo = video => ({
 
 export const showMyVideos = () => ({
   type: SHOW_MY_VIDEOS,
+})
+
+export const changeText = text => ({
+  type: CHANGE_TEXT,
+  text,
 })
