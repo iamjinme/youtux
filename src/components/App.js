@@ -6,7 +6,7 @@ import { Grid, Glyphicon } from 'react-bootstrap';
 const App = () => (
   <div>
     <Grid>
-      <h3><Glyphicon glyph="facetime-video" /> Youtux</h3>
+      <h3><Glyphicon glyph="facetime-video" /> YoutuX</h3>
       <SearchVideos />
       <hr/>
       <VisibleVideoList />
