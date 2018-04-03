@@ -1,7 +1,48 @@
 import React from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
-import { searchVideos, showMyVideos } from '../actions';
+import { searchVideos, showMyVideos, changeText } from '../actions';
 import { Form, FormGroup, ControlLabel, FormControl, Button, ButtonGroup } from 'react-bootstrap';
+import { AsyncTypeahead } from 'react-bootstrap-typeahead';
+import { API_KEY } from '../actions'
+
+const SUGGEST_URL = `https://suggestqueries.google.com/complete/search?key=${API_KEY}&client=firefox&q=`;
+const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
+
+class AutoComplete extends React.Component {
+  state = {
+    isLoading: false,
+    options: [],
+    text: '',
+  }
+  changeText = (text) => {
+    this.setState({ text })
+    this.props.dispatch(changeText(text));
+  }
+  render() {
+    return (
+      <AsyncTypeahead
+        placeholder='Write anything'
+        isLoading={ this.state.isLoading }
+        onChange={ changed => this.changeText(changed[0]) }
+        submitFormOnEnter={ true }
+        onInputChange={ text => this.changeText(text) }
+        onSearch={ query => {
+        this.setState({isLoading: true});
+        axios.get(`${CORS_PROXY}${SUGGEST_URL}${query}`)
+          .then(response => {
+            const words = [
+              response.data[0],
+              ...response.data[1],
+            ]
+            this.setState({ isLoading: false, options: words });
+          });
+        }}
+        options={this.state.options}
+      />
+    );
+  }
+}
 
 const SearchVideos = ({ dispatch }) => {
   let input
@@ -10,15 +51,11 @@ const SearchVideos = ({ dispatch }) => {
       <Form inline
         onSubmit={ e => {
           e.preventDefault()
-          if (!input.value.trim()) {
-            return
-          }
-          dispatch(searchVideos(input.value))
+          dispatch(searchVideos())
         }}
       >
-        <FormGroup controlId="formInlineName">
-          <ControlLabel> :: Youtux :: </ControlLabel>{' '}
-          <FormControl inputRef={ node => input = node } type="text" placeholder="Write anything" />
+        <FormGroup controlId="formSearchVideo">
+          <AutoComplete dispatch={ dispatch }></AutoComplete>
         </FormGroup>{' '}
         <ButtonGroup>
           <Button type="submit" bsStyle="info">Search</Button>
