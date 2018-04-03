@@ -61,10 +61,21 @@ const myVideos = (state = initialMyVideos(), action) => {
   }
 }
 
+const channels = (state = [], action) => {
+  switch (action.type) {
+    case SEARCH_VIDEOS:
+      const channels = action.videos.map(video => video.snippet.channelTitle)
+      return [...new Set(channels)]
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   textToSearch,
   videos,
   myVideos,
+  channels,
 });
 
 export default rootReducer;
