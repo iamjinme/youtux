@@ -3,7 +3,8 @@ import {
   SEARCH_VIDEOS,
   SAVE_VIDEO,
   SHOW_MY_VIDEOS,
-  CHANGE_TEXT
+  CHANGE_TEXT,
+  CHANGE_CHANNEL,
 } from '../actions'
 
 const initialMyVideos = () => {
@@ -71,11 +72,21 @@ const channels = (state = [], action) => {
   }
 }
 
+const filterChannel = (state = '', action) => {
+  switch (action.type) {
+    case CHANGE_CHANNEL:
+      return action.text
+    default:
+      return state
+  } 
+}
+
 const rootReducer = combineReducers({
   textToSearch,
   videos,
   myVideos,
   channels,
+  filterChannel,
 });
 
 export default rootReducer;
