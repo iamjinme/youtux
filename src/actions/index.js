@@ -1,7 +1,7 @@
 import axios from 'axios';
 export const SEARCH_VIDEOS = 'SEARCH_VIDEOS';
 export const CHANGE_TEXT = 'CHANGE_TEXT';
-export const CHANGE_CHANNEL = 'CHANGE_CATEGORY';
+export const CHANGE_CHANNEL = 'CHANGE_CHANNEL';
 export const CHANGE_YEAR = 'CHANGE_YEAR';
 export const SAVE_VIDEO = 'SAVE_VIDEO';
 export const SHOW_MY_VIDEOS = 'SHOW_MY_VIDEOS';
@@ -31,5 +31,10 @@ export const showMyVideos = () => ({
 
 export const changeText = text => ({
   type: CHANGE_TEXT,
+  text,
+})
+
+export const changeChannel = text => ({
+  type: CHANGE_CHANNEL,
   text,
 })
