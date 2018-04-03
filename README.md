@@ -1,6 +1,6 @@
 # YoutuX
 
-Homework from SmartX.net: Search Youtube App with React/ReduX (Yout.uX)
+Homework from Smart-X.net: Search Youtube App with React/ReduX (Yout-uX)
 
 ### Getting Started
 
@@ -34,3 +34,7 @@ YoutuX use an API_KEY to connect to Youtube API, please considerate change this 
 - Change button My Videos by Tabs ¿It is really necessary?
 - Use SASS/SCSS, for now React Bootstrap is enough
 - Optimize some things ¿For two and a half days of work, is that okay?
+
+## Trello
+I used trello [board](https://trello.com/b/EwE7HyW9/youtux) to organize all tasks (in Spanish)
+
