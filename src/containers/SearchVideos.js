@@ -25,7 +25,7 @@ class AutoComplete extends React.Component {
       <AsyncTypeahead
         placeholder='Write anything to search'
         isLoading={ this.state.isLoading }
-        onChange={ changed => this.changeText(changed[0]) }
+        onChange={ changed => this.changeText(changed[0] || '') }
         submitFormOnEnter={ true }
         onInputChange={ text => this.changeText(text) }
         onSearch={ query => {

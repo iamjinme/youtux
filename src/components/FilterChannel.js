@@ -7,7 +7,9 @@ const FilterChannel = ({ channels, changeChannel }) => (
   <Typeahead
     placeholder='Write channel to filter'
     options = { channels }
-    onChange = { changed => changeChannel(changed[0]) }
+    onChange = { changed => {
+      changeChannel(changed[0] || '') 
+    }}
   />
 )
 
