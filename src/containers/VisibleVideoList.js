@@ -8,11 +8,11 @@ const mapStateToProps = state => ({
   videos: state.videos,
 })
 
-const maptDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   saveVideo: id => dispatch(saveVideo(id))
 })
 
 export default connect(
   mapStateToProps,
-  maptDispatchToProps,
+  mapDispatchToProps,
 )(VideoList);
