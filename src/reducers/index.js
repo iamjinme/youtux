@@ -2,7 +2,8 @@ import { combineReducers } from 'redux';
 import {
   SEARCH_VIDEOS,
   SAVE_VIDEO,
-  SHOW_MY_VIDEOS
+  SHOW_MY_VIDEOS,
+  CHANGE_TEXT
 } from '../actions'
 
 const initialMyVideos = () => {
@@ -19,6 +20,8 @@ const foundId = (videos, id) => {
 const textToSearch = (state = '', action) => {
   switch (action.type) {
     case SEARCH_VIDEOS:
+      return action.text
+    case CHANGE_TEXT:
       return action.text
     default:
       return state
